@@ -23,8 +23,11 @@ jobs:
         dotnet restore RaceDayAPI.csproj
         dotnet restore RaceDayAPI.Tests/RaceDayAPI.Tests.csproj
 
-    - name: Build project
+    - name: Build API project
       run: dotnet build RaceDayAPI.csproj --configuration Release --no-restore
+
+    - name: Build Test project
+      run: dotnet build RaceDayAPI.Tests/RaceDayAPI.Tests.csproj --configuration Release --no-restore
 
     - name: Run tests
       run: dotnet test RaceDayAPI.Tests/RaceDayAPI.Tests.csproj --configuration Release --no-build --verbosity normal
