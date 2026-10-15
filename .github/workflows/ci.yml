@@ -19,15 +19,10 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Restore dependencies
-      run: |
-        dotnet restore RaceDayAPI.csproj
-        dotnet restore RaceDayAPI.Tests/RaceDayAPI.Tests.csproj
+      run: dotnet restore RaceDayAPI.slnx
 
-    - name: Build API project
+    - name: Build API
       run: dotnet build RaceDayAPI.csproj --configuration Release --no-restore
 
-    - name: Build Test project
-      run: dotnet build RaceDayAPI.Tests/RaceDayAPI.Tests.csproj --configuration Release --no-restore
-
-    - name: Run tests
-      run: dotnet test RaceDayAPI.Tests/RaceDayAPI.Tests.csproj --configuration Release --no-build --verbosity normal
+    - name: Run Tests
+      run: dotnet test RaceDayAPI.Tests/RaceDayAPI.Tests.csproj --configuration Release --verbosity normal
